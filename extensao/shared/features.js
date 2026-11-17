@@ -121,7 +121,7 @@
         for (const [id, , , def] of THEME_PARTS) out[id] = raw && typeof raw[id] === 'boolean' ? raw[id] : def;
         return out;
     };
-    const PANEL_THEMES = { orange: 'Laranja (padrão)', graphite: 'Grafite', light: 'Claro', blue: 'Azul', purple: 'Roxo' };
+    const PANEL_THEMES = { orange: 'RedRat (padrão)', amber: 'Laranja', graphite: 'Grafite', light: 'Claro', blue: 'Azul', purple: 'Roxo' };
 
     const normalizeHost = x => String(x).trim().toLowerCase().replace(/\.+$/, '');
     const matchesHost = (host, list) => list.some(value => {

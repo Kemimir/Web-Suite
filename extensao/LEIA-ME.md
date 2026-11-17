@@ -23,6 +23,9 @@ Conexão, desempenho e privacidade para qualquer site. É a versão em extensão
 | Mídia | pausar vídeos mudos fora da tela, **pausar vídeo de feed que sai da tela (Instagram, TikTok, X)**, pausar ao ocultar a aba, reduzir preload, remover autoplay, pausar vídeos que começam sozinhos |
 | Aparência | **tema das páginas (escuro, AMOLED, sépia, alto contraste)**, **ocultar Shorts do YouTube**, **ocultar cookies e "abrir no app"**, ocultar banners conhecidos, ocultar barras laterais |
 
+## Novidades da 1.6.1
+- **Visual RedRat**: painel em vermelho RedRat por padrão (o laranja antigo continua como tema "Laranja") e ícones novos, sólidos e minimalistas: um relógio com raio no centro. Há também versões vermelhas dos ícones (`icons/icon-red-*.png`) para barras de ferramentas claras.
+
 ## Novidades da 1.6.0
 - **Funções em abas por tipo**: nas abas Esta página e Padrões, as funções ficam separadas por tipo (Conexão, Privacidade, Desempenho, Mídia, Aparência). Em Padrões há também **Temas** (tema do painel, tema das páginas e as chaves abaixo) e **Backup**. Os ajustes de rede, de abas inativas e de hosts aparecem junto do tipo a que pertencem.
 - **Tema das páginas por tipo de elemento** (Padrões → Temas): chaves liga/desliga para modo escuro do navegador, fundos, texto, links, tabelas e código, campos de formulário, barras de rolagem, seleção de texto, escurecer imagens (desligada) e correções por site (hoje: faixa cinza da resposta por IA do Google). A mudança vale na hora, sem recarregar.

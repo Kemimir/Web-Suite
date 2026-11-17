@@ -43,3 +43,7 @@ Preencher conforme os testes nos sites reais forem feitos. Formato: [ ] aberto, 
 ## 1.6.0 (abas por tipo + tema por elemento)
 - OK no teste local: abas de tipo no painel (Esta página e Padrões), Temas/Backup, chaves do tema gravam e aplicam na hora (links, fundos, formulários, escurecer imagens).
 - Falta ver em sites reais com a extensão recarregada (aparência do painel com as abas em cada tema do painel).
+
+## Visual RedRat (2026-11-17)
+- Painel agora vermelho (#f02043) por padrao; tema "Laranja" (amber) mantido como opcao. Conferido so em captura do popup-test.
+- Pendente: recarregar a extensao no Brave e ver o painel real, nos temas claro/azul/roxo. Nada enviado ao GitHub.

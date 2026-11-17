@@ -1,12 +1,12 @@
 :root {
-  --bg: #000;
-  --srf: #0a0a0a;
-  --srf2: #171717;
+  --bg: #0b090e;
+  --srf: #151019;
+  --srf2: #221a28;
   --line: rgba(255, 255, 255, .1);
   --txt: #f1f2f5;
   --txt2: #a8a8a8;
-  --acc: #ff640a;
-  --acc-rgb: 255, 100, 10;
+  --acc: #f02043;
+  --acc-rgb: 240, 32, 67;
   --pre: #e8e8e8;
   color-scheme: dark;
 }
@@ -95,10 +95,11 @@ select:focus-visible { outline: 2px solid var(--acc); outline-offset: 1px; }
 
 /* Temas do painel */
 :root[data-theme="graphite"] { --bg: #16171a; --srf: #1d1f23; --srf2: #292c31; --line: rgba(255, 255, 255, .12); --txt: #eceef2; --txt2: #a9adb5; }
-:root[data-theme="light"] { --bg: #ffffff; --srf: #f4f4f7; --srf2: #e8e8ee; --line: rgba(0, 0, 0, .14); --txt: #17171c; --txt2: #5a5a66; --acc: #d9500a; --acc-rgb: 217, 80, 10; --pre: #1d1d22; color-scheme: light; }
+:root[data-theme="light"] { --bg: #ffffff; --srf: #f4f4f7; --srf2: #e8e8ee; --line: rgba(0, 0, 0, .14); --txt: #17171c; --txt2: #5a5a66; --acc: #c4152f; --acc-rgb: 196, 21, 47; --pre: #1d1d22; color-scheme: light; }
 :root[data-theme="light"] .good { color: #12803a; }
 :root[data-theme="light"] .mid { color: #8a6200; }
 :root[data-theme="light"] .bad { color: #c62828; }
+:root[data-theme="amber"] { --bg: #000; --srf: #0a0a0a; --srf2: #171717; --acc: #ff640a; --acc-rgb: 255, 100, 10; }
 :root[data-theme="blue"] { --bg: #050b16; --srf: #0a1426; --srf2: #12203a; --acc: #3b9cff; --acc-rgb: 59, 156, 255; }
 :root[data-theme="purple"] { --bg: #0b0613; --srf: #130c20; --srf2: #1e1433; --acc: #a56bff; --acc-rgb: 165, 107, 255; }
 
