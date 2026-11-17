@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Web Suite - By Kemir",
+  "version": "1.5.0",
+  "description": "Conexão, desempenho e privacidade para qualquer site: pré-carregamento, modo econômico, diagnóstico e limpeza de rastreadores.",
+  "author": "Kemir",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Web Suite - By Kemir",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "alarms",
+    "declarativeNetRequest"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "shared/features.js",
+        "content/main.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "exclude_matches": [
+        "*://*.crunchyroll.com/*"
+      ],
+      "js": [
+        "content/page.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-page": {
+      "suggested_key": {
+        "default": "Alt+Shift+W"
+      },
+      "description": "Ligar ou desligar o Web Suite nesta página"
+    }
+  }
+}

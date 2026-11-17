@@ -1,0 +1,4 @@
+teste/requests.log
+*.zip
+node_modules/
+__pycache__/

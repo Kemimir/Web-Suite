@@ -1,0 +1,5 @@
+WEB SUITE
+
+  extensao\   a extensao (Manifest V3). Carregue ESTA pasta em brave://extensions > Carregar sem compactacao
+  teste\      paginas locais para testar sem instalar (veja COMO-TESTAR.md)
+  legado\     a versao em userscript (Tampermonkey), guardada so como referencia

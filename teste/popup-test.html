@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Suite - By Kemir</title>
+  <link rel="stylesheet" href="../extensao/popup/popup.css">
+</head>
+<body>
+  <header class="top">
+    <img src="../extensao/icons/icon-48.png" alt="" width="36" height="36">
+    <div class="brand">
+      <h1>Web Suite <small class="sig">By Kemir</small></h1>
+      <span id="pageLabel" class="muted"></span>
+    </div>
+    <div class="master">
+      <span id="masterLabel" class="muted">Ligada</span>
+      <div id="masterToggle" class="switch" role="switch" tabindex="0" aria-label="Ligar ou desligar a extensão"></div>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="page" aria-selected="true">Esta página</button>
+    <button class="tab" role="tab" data-tab="defaults" aria-selected="false">Padrões</button>
+    <button class="tab" role="tab" data-tab="diag" aria-selected="false">Diagnóstico</button>
+  </nav>
+
+  <main>
+    <section id="tab-page" class="pane">
+      <p id="pageNote" class="note" hidden></p>
+      <div class="row between">
+        <div><strong>Excluir esta página</strong><p class="muted small">Domínio + caminho, sem ?parâmetros nem #fragmento.</p></div>
+        <div id="excludeToggle" class="switch" role="switch" tabindex="0" aria-label="Excluir esta página"></div>
+      </div>
+      <div class="row between" id="blockRow">
+        <div><strong>Scripts de terceiros neste site</strong><p id="blockNote" class="muted small"></p></div>
+        <div id="blockToggle" class="switch" role="switch" tabindex="0" aria-label="Bloquear scripts de terceiros neste site"></div>
+      </div>
+      <div class="quick">
+        <label for="quickFeature"><strong>Excluir de uma função só</strong></label>
+        <select id="quickFeature" aria-label="Função a excluir"></select>
+        <div class="actions">
+          <button id="quickPage" class="btn" type="button">Desta página</button>
+          <button id="quickSite" class="btn" type="button">Do site inteiro</button>
+        </div>
+        <div id="quickList" class="chips" aria-live="polite"></div>
+      </div>
+      <div id="pageFeatures"></div>
+      <div class="actions">
+        <button id="resetPage" class="btn" type="button">Restaurar padrões desta página</button>
+        <button id="safeMode" class="btn" type="button" title="Desliga todas as funções nesta página e recarrega">Modo seguro: desligar tudo aqui</button>
+      </div>
+    </section>
+
+    <section id="tab-defaults" class="pane" hidden>
+      <p class="muted small">Valem para todas as páginas, a menos que a página tenha uma escolha própria.</p>
+      <div id="defaultFeatures"></div>
+      <div class="field">
+        <label for="panelTheme">Tema do painel</label>
+        <select id="panelTheme"></select>
+        <label for="pageTheme">Tema das páginas (função "Tema das páginas")</label>
+        <select id="pageTheme"></select>
+      </div>
+      <div class="field">
+        <label for="blockLevel">Scripts de terceiros (bloqueio pela rede)</label>
+        <select id="blockLevel">
+          <option value="0">Nenhum (padrão)</option>
+          <option value="1">Rastreadores e botões sociais</option>
+          <option value="2">+ chats e testes A/B</option>
+        </select>
+        <p class="muted small">Não mexe em login nem pagamento e nunca na Crunchyroll. O número de bloqueios aparece no ícone da extensão.</p>
+      </div>
+      <div class="field">
+        <div class="row between">
+          <div><strong>Suspender abas inativas</strong><p class="muted small">Libera a memória das abas paradas (elas recarregam ao voltar). Abas com áudio, fixadas ou com formulário preenchido ficam de fora.</p></div>
+          <div id="tabsToggle" class="switch" role="switch" tabindex="0" aria-label="Suspender abas inativas"></div>
+        </div>
+        <label for="tabsMinutes">Suspender depois de</label>
+        <select id="tabsMinutes">
+          <option value="10">10 minutos</option>
+          <option value="30">30 minutos</option>
+          <option value="60">1 hora</option>
+          <option value="180">3 horas</option>
+        </select>
+        <label for="tabsProtect">Sites que nunca suspendem (um por linha)</label>
+        <textarea id="tabsProtect" rows="3" spellcheck="false" placeholder="meu-app.example"></textarea>
+      </div>
+      <div class="field">
+        <label for="blockedHosts">Hosts sempre bloqueados (um por linha)</label>
+        <textarea id="blockedHosts" rows="3" spellcheck="false" placeholder="anuncios.example"></textarea>
+      </div>
+      <div class="field">
+        <label for="allowedHosts">Hosts liberados para abrir pop-up (um por linha)</label>
+        <textarea id="allowedHosts" rows="3" spellcheck="false" placeholder="accounts.google.com"></textarea>
+      </div>
+      <div class="field">
+        <label>Backup das configurações</label>
+        <div class="actions">
+          <button id="cfgExport" class="btn" type="button">Exportar</button>
+          <button id="cfgImport" class="btn" type="button">Importar</button>
+          <input id="cfgFile" type="file" accept="application/json,.json" hidden>
+        </div>
+        <p id="cfgMsg" class="muted small" role="status"></p>
+      </div>
+    </section>
+
+    <section id="tab-diag" class="pane" hidden>
+      <h3 class="subhead">Vitais desta página</h3>
+      <pre id="vitalsText">—</pre>
+      <h3 class="subhead">Abas mais pesadas (memória JavaScript)</h3>
+      <div id="heapList" class="heaps"></div>
+      <p class="muted small">A memória JavaScript é só uma parte do que a aba usa (imagens, vídeo e a própria página ficam de fora). Serve para comparar abas entre si.</p>
+      <h3 class="subhead">Economia acumulada</h3>
+      <pre id="statsText">Carregando…</pre>
+      <div class="actions"><button id="statsReset" class="btn" type="button">Zerar contadores</button></div>
+      <h3 class="subhead">Esta página</h3>
+      <pre id="diagText">Abra esta aba numa página comum para ver o diagnóstico.</pre>
+      <div class="actions">
+        <button id="diagRefresh" class="btn" type="button">Atualizar</button>
+        <button id="diagCopy" class="btn" type="button">Copiar relatório</button>
+      </div>
+      <p id="diagMsg" class="muted small" role="status"></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a href="https://github.com/Kemimir/Web-Suite" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="https://github.com/Kemimir/Web-Suite/blob/main/TERMS.md" target="_blank" rel="noopener">Termos de uso</a> ·
+    <a href="https://github.com/Kemimir/Web-Suite/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacidade</a>
+  </footer>
+
+  <script src="popup-shim.js"></script>
+  <script src="../extensao/shared/features.js"></script>
+  <script src="../extensao/popup/popup.js"></script>
+</body>
+</html>
