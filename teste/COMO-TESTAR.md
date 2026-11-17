@@ -1,8 +1,8 @@
-# Teste local da extensão Web Suite
+# Teste local da extensão WEBoa
 
 Não precisa instalar a extensão: `chrome-shim.js` simula só o pedaço do `chrome.*` que ela usa.
 
-1. Na pasta raiz (`Web Suite`): `python teste/log_server.py 8766   (registra em teste/requests.log cada requisicao e o cabecalho Sec-Purpose)`
+1. Na pasta raiz (`WEBoa`): `python teste/log_server.py 8766   (registra em teste/requests.log cada requisicao e o cabecalho Sec-Purpose)`
 2. Abra:
    - `http://localhost:8766/teste/wrap.html` — conteúdo numa página comum (dentro de um iframe, para não misturar com scripts do navegador);
    - `...wrap.html?slow` — simula rede 3G (modo econômico);

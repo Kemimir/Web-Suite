@@ -40,7 +40,7 @@
 
     // Aceita só o que a extensão grava; o resto é descartado.
     function sanitizeBackup(raw) {
-        if (!raw || raw.app !== 'web-suite' || !raw.data || typeof raw.data !== 'object') throw new Error('Arquivo inválido.');
+        if (!raw || raw.app !== 'weboa' || !raw.data || typeof raw.data !== 'object') throw new Error('Arquivo inválido.');
         const known = new Set(FEATURES.map(f => f.id));
         const plain = x => (x && typeof x === 'object' && !Array.isArray(x) ? x : {});
         const bools = obj => Object.fromEntries(Object.entries(plain(obj)).filter(([k, v]) => (known.has(k) || k === 'blocker') && typeof v === 'boolean'));
@@ -74,7 +74,7 @@
 
     async function exportConfig() {
         const body = JSON.stringify({
-            app: 'web-suite',
+            app: 'weboa',
             version: 1,
             exportedAt: new Date().toISOString(),
             data: { defaults: store.defaults, pages: store.pages, hosts: store.hosts, config: store.config, tabs: store.tabs },
@@ -82,7 +82,7 @@
         const url = URL.createObjectURL(new Blob([body], { type: 'application/json' }));
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'web-suite-config.json';
+        a.download = 'weboa-config.json';
         a.click();
         setTimeout(() => URL.revokeObjectURL(url), 2000);
         $('cfgMsg').textContent = 'Configurações exportadas.';

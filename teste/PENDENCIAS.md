@@ -1,4 +1,4 @@
-# Pendências e anotações (Web Suite)
+# Pendências e anotações (WEBoa)
 
 Preencher conforme os testes nos sites reais forem feitos. Formato: [ ] aberto, [x] resolvido.
 
@@ -28,3 +28,14 @@ Preencher conforme os testes nos sites reais forem feitos. Formato: [ ] aberto, 
 - OK: botão aparece em imagem comum, não aparece em <video>, poster sobreposto a vídeo nem miniatura de /watch (YouTube real); overlay ajusta à tela, zoom por roda, Esc fecha; Wikipédia real abre normal.
 - OK: Crunchyroll simulada sem lightbox. Console do YouTube sem erros.
 - Não testado: X, Instagram, TikTok, Twitch logados, arrasto com mouse real.
+
+## Teste 2026-11-17 (sites reais, logado, só leitura; código instalado = antes da renomeação)
+- X /home: 227 quadros rolando, 0 imagens vazias, sem erros; botão ⤢ em fotos, nenhum em vídeos (videoPlayer); abriu foto 503×598.
+- Instagram: 352 quadros, 0 vazias, sem erros; botão em imagem do feed (sem vídeo na tela para testar a pausa).
+- TikTok: botão não aparece sobre vídeo. Twitch: idem, sem erros. YouTube: miniaturas /watch sem botão.
+- Google (gatos): links já sem /url? e sem ping; único erro de console vem de outra extensão.
+- Falta: pausa de vídeo de feed com vídeo realmente em tela, arrasto com mouse real, recarregar a extensão para validar a renomeação WEBoa.
+
+## Google, resposta por IA no tema AMOLED (corrigido no código, falta ver com a extensão recarregada)
+- Problema: o degradê do "Mostrar mais" e a caixa quadrada atrás do botão usavam o cinza do tema escuro do Google (rgb 34,36,42) e viravam faixas cinzas sobre o fundo preto.
+- Correção: no módulo `dark`, só em google.*, troca esse cinza do degradê pela cor do tema e deixa a caixa quadrada transparente (desfeito ao desligar). Visto numa simulação na página real; falta conferir com a extensão recarregada.

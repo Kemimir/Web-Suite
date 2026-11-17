@@ -1,8 +1,8 @@
-# Política de privacidade — Web Suite
+# Política de privacidade — WEBoa
 
 Última atualização: 17/11/2026
 
-**Resumo: o Web Suite não coleta, não envia e não vende nenhum dado seu.** Tudo acontece dentro do seu navegador.
+**Resumo: o WEBoa não coleta, não envia e não vende nenhum dado seu.** Tudo acontece dentro do seu navegador.
 
 ## O que a extensão guarda
 Somente no `chrome.storage` do seu próprio navegador (nunca em servidor):

@@ -1,5 +1,5 @@
 /*
- * Web Suite — serviço em segundo plano.
+ * WEBoa — serviço em segundo plano.
  *  1. Suspende abas inativas (chrome.tabs.discard), com proteções.
  *  2. Controla scripts de terceiros por categoria (declarativeNetRequest).
  *  3. Soma as estatísticas de economia enviadas pelo script de conteúdo.

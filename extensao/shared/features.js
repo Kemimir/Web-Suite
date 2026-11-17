@@ -1,5 +1,5 @@
 /*
- * Lista de funções e perfis do Web Suite. Carregada antes do script de conteúdo e do popup,
+ * Lista de funções e perfis do WEBoa. Carregada antes do script de conteúdo e do popup,
  * então as duas pontas enxergam exatamente a mesma lista.
  */
 (function (root) {

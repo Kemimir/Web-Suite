@@ -1,8 +1,8 @@
-# Termos de uso — Web Suite
+# Termos de uso — WEBoa
 
 Última atualização: 17/11/2026
 
-Ao instalar ou usar o Web Suite ("a extensão"), você concorda com estes termos. Se não concordar, desinstale a extensão.
+Ao instalar ou usar o WEBoa ("a extensão"), você concorda com estes termos. Se não concordar, desinstale a extensão.
 
 1. **O que é.** Uma extensão gratuita e de código aberto (licença MIT, veja `LICENSE`) que ajusta a forma como as páginas carregam e aparecem no seu navegador: conexão, desempenho, privacidade e temas. Autor: Kemir.
 2. **Sem garantia.** A extensão é fornecida "como está", sem garantias de qualquer tipo. As otimizações mexem em páginas de terceiros e podem, em alguns sites, mudar o visual ou quebrar uma função. Para isso existem a exclusão por página/site, o modo seguro e a chave geral; use-os.
@@ -16,6 +16,6 @@ Ao instalar ou usar o Web Suite ("a extensão"), você concorda com estes termos
 
 ---
 
-# Terms of use — Web Suite (summary in English)
+# Terms of use — WEBoa (summary in English)
 
-Web Suite is a free, open-source (MIT) browser extension provided "as is", without warranty. It modifies how web pages load and look in your own browser; some optimizations may change or break specific sites, and you can disable any feature per page or per site. Third-party names are trademarks of their owners; this project is not affiliated with them. Nothing leaves your browser (see `PRIVACY.md`). To the extent permitted by law the author is not liable for damages arising from its use.
+WEBoa is a free, open-source (MIT) browser extension provided "as is", without warranty. It modifies how web pages load and look in your own browser; some optimizations may change or break specific sites, and you can disable any feature per page or per site. Third-party names are trademarks of their owners; this project is not affiliated with them. Nothing leaves your browser (see `PRIVACY.md`). To the extent permitted by law the author is not liable for damages arising from its use.

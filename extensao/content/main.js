@@ -1,5 +1,5 @@
 /*
- * Web Suite — script de conteúdo (mundo isolado). Aplica as funções à página e conversa com o popup.
+ * WEBoa — script de conteúdo (mundo isolado). Aplica as funções à página e conversa com o popup.
  * O bloqueio de pop-ups roda no mundo da página (content/page.js) e recebe o estado por evento.
  */
 (() => {
@@ -7,12 +7,12 @@
 
     const { FEATURES, ADAPTIVE_TARGETS, AUTOPLAY_ALLOW, PAGE_THEMES, matchesHost, profileFor, pageKeyOf } = self.WS;
 
-    const INSTANCE = '__webSuiteExtInstalled__';
+    const INSTANCE = '__weboaExtInstalled__';
     if (window[INSTANCE]) return;
     window[INSTANCE] = true;
 
     const DEBUG = false;
-    const log = (...m) => { if (DEBUG) console.debug('[Web Suite]', ...m); };
+    const log = (...m) => { if (DEBUG) console.debug('[WEBoa]', ...m); };
 
     /* ------------------------------------------------------------------ *
      *  ESTADO (vem do chrome.storage.local)
@@ -124,7 +124,7 @@
 
     // Restaura somente valores que ainda pertencem à extensão.
     function attributes(id) {
-        const marker = 'data-web-suite-' + id;
+        const marker = 'data-weboa-' + id;
         const originals = new WeakMap();
 
         return {
@@ -158,7 +158,7 @@
 
     function styleModule(css) {
         const style = document.createElement('style');
-        style.dataset.webSuite = '';
+        style.dataset.weboa = '';
         style.textContent = css;
         (document.head || document.documentElement).append(style);
         return { stop: () => style.remove() };
@@ -168,7 +168,7 @@
         const link = document.createElement('link');
         link.rel = rel;
         link.href = href;
-        link.dataset.webSuite = '';
+        link.dataset.weboa = '';
         Object.assign(link, extra);
         (document.head || document.documentElement).append(link);
         return link;
@@ -218,7 +218,7 @@
     function notify(text) {
         if (!toast) {
             const host = document.createElement('div');
-            host.dataset.webSuiteToast = '';
+            host.dataset.weboaToast = '';
             host.style.cssText = 'position:fixed!important;left:50%!important;bottom:20px!important;transform:translateX(-50%)!important;z-index:2147483647!important;pointer-events:none!important';
             const root = host.attachShadow({ mode: 'closed' });
             const box = document.createElement('div');
@@ -346,7 +346,7 @@
             };
             script = document.createElement('script');
             script.type = 'speculationrules';
-            script.dataset.webSuite = '';
+            script.dataset.weboa = '';
             script.textContent = JSON.stringify(rules);
             document.addEventListener('securitypolicyviolation', onViolation);
             (document.head || document.documentElement).append(script);
@@ -441,7 +441,7 @@
             }
 
             function build(frame) {
-                if (records.has(frame) || frame.hasAttribute('data-web-suite-facade')) return;
+                if (records.has(frame) || frame.hasAttribute('data-weboa-facade')) return;
                 const src = frame.getAttribute('src') || '';
                 const url = parseUrl(src);
                 if (!url) return;
@@ -456,7 +456,7 @@
                 if (width < 120 || height < 70) return;
 
                 const facade = document.createElement('div');
-                facade.dataset.webSuiteFacadeHost = '';
+                facade.dataset.weboaFacadeHost = '';
                 facade.setAttribute('role', 'button');
                 facade.setAttribute('tabindex', '0');
                 facade.setAttribute('aria-label', 'Reproduzir vídeo' + (frame.title ? ': ' + frame.title : ''));
@@ -471,7 +471,7 @@
 
                 records.set(frame, { facade, src, display: frame.style.display });
                 bump('facades');
-                frame.setAttribute('data-web-suite-facade', '');
+                frame.setAttribute('data-weboa-facade', '');
                 frame.setAttribute('src', 'about:blank');
                 frame.style.setProperty('display', 'none', 'important');
                 frame.before(facade);
@@ -498,7 +498,7 @@
                 frame.setAttribute('src', href || record.src);
                 if (record.display) frame.style.display = record.display;
                 else frame.style.removeProperty('display');
-                frame.removeAttribute('data-web-suite-facade');
+                frame.removeAttribute('data-weboa-facade');
                 record.facade.remove();
             }
 
@@ -530,7 +530,7 @@
                 const media = event.target;
                 if (!(media instanceof HTMLMediaElement)) return;
                 if (navigator.userActivation?.hasBeenActive) return;
-                if (protectedVideo(media) || media.dataset.webSuiteKeepPlaying !== undefined) return;
+                if (protectedVideo(media) || media.dataset.weboaKeepPlaying !== undefined) return;
                 media.pause();
                 paused.add(media);
                 bump('autoplayStopped');
@@ -552,7 +552,7 @@
             function unload(img) {
                 if (saved.has(img) || !img.complete || img.naturalWidth < 40) return;
                 const src = img.currentSrc || img.src;
-                if (!src || src.startsWith('data:') || img.hasAttribute('data-web-suite-skip')) return;
+                if (!src || src.startsWith('data:') || img.hasAttribute('data-weboa-skip')) return;
                 const box = img.getBoundingClientRect();
                 if (box.width < 40 || box.height < 40) return;
 
@@ -570,7 +570,7 @@
                 img.removeAttribute('srcset');
                 picture.forEach(s => s.removeAttribute('srcset'));
                 img.setAttribute('src', BLANK);
-                img.setAttribute('data-web-suite-lite', '');
+                img.setAttribute('data-weboa-lite', '');
                 bump('imagesUnloaded');
             }
 
@@ -585,7 +585,7 @@
                 if (data.sizes !== null) img.setAttribute('sizes', data.sizes);
                 if (data.src === null) img.removeAttribute('src');
                 else img.setAttribute('src', data.src);
-                img.removeAttribute('data-web-suite-lite');
+                img.removeAttribute('data-weboa-lite');
             }
 
             const io = new IntersectionObserver(entries => {
@@ -698,7 +698,7 @@
 
         dark() {
             const t = PAGE_THEMES[config.pageTheme] || PAGE_THEMES.dark;
-            return styleModule(`
+            const style = styleModule(`
             html,body { background-color:${t.bg}!important; color:${t.text}!important; color-scheme:${t.scheme}!important }
             main,article,section,header,footer,nav,aside,dialog { background-color:${t.panel}!important; color:${t.text}!important }
             p,li,label,h1,h2,h3,h4,h5,h6 { color:${t.text}!important }
@@ -707,6 +707,44 @@
             table,th,td,pre,code,kbd,samp,blockquote { background-color:${t.code}!important; color:${t.text}!important; border-color:${t.border}!important }
             input,textarea,select,button { color-scheme:${t.scheme} }
         `);
+            if (!/(^|\.)google\.[a-z.]+$/.test(location.hostname)) return style;
+
+            // Google: o degradê do "Mostrar mais" (resposta por IA) termina no cinza do tema
+            // escuro do próprio Google e vira uma faixa cinza sobre o fundo do tema. Troca a
+            // cor final do degradê pela cor de fundo do tema.
+            const fix = new Set();
+            const rgb = t.bg.replace('#', '').match(/../g).map(h => parseInt(h, 16)).join(',');
+            const GRAY = /rgba?\(\s*34,\s*36,\s*42(?:,\s*([\d.]+))?\s*\)/g;
+            const scan = () => {
+                for (const el of document.querySelectorAll('div,span')) {
+                    if (fix.has(el)) continue;
+                    const cs = getComputedStyle(el);
+                    const image = cs.backgroundImage;
+                    if (image !== 'none' && image.includes('gradient') && GRAY.test(image)) {
+                        GRAY.lastIndex = 0;
+                        fix.add(el);
+                        el.style.setProperty('background-image', image.replace(GRAY, (m, a) => (a === undefined ? `rgb(${rgb})` : `rgba(${rgb},${a})`)), 'important');
+                    } else if (cs.backgroundColor === 'rgb(34, 36, 42)' && cs.borderTopLeftRadius === '0px' && el.offsetHeight <= 120) {
+                        // caixa quadrada atrás do botão "Mostrar mais"
+                        fix.add(el);
+                        el.style.setProperty('background-color', 'transparent', 'important');
+                    }
+                    GRAY.lastIndex = 0;
+                }
+            };
+            let timer = 0;
+            const later = () => { clearTimeout(timer); timer = setTimeout(scan, 400); };
+            const mo = new MutationObserver(later);
+            mo.observe(document.documentElement, { childList: true, subtree: true });
+            scan();
+            return {
+                stop() {
+                    mo.disconnect();
+                    clearTimeout(timer);
+                    for (const el of fix) { el.style.removeProperty('background-image'); el.style.removeProperty('background-color'); }
+                    style.stop();
+                },
+            };
         },
 
         effects: () => styleModule(`
@@ -826,7 +864,7 @@
 
             // Tudo por CSSOM (style.cssText) e createElement: funciona com CSP e Trusted Types estritos.
             const host = document.createElement('div');
-            host.dataset.webSuiteLightbox = '';
+            host.dataset.weboaLightbox = '';
             host.style.cssText = 'position:fixed!important;inset:0!important;z-index:2147483646!important;pointer-events:none!important';
             const root = host.attachShadow({ mode: 'open' });
 
@@ -875,7 +913,7 @@
                 // Nada de botão sobre vídeos, players, miniaturas de vídeo ou posters.
                 if (document.elementsFromPoint(event.clientX, event.clientY).some(el => el.localName === 'video' || el.localName === 'canvas' || el.closest?.('.html5-video-player,[data-testid="videoPlayer"],[data-testid="videoComponent"]'))) return null;
                 const img = t instanceof HTMLImageElement ? t : t.querySelector?.('img');
-                if (!img || img.hasAttribute('data-web-suite-lite')) return null;
+                if (!img || img.hasAttribute('data-weboa-lite')) return null;
                 const holder = img.closest('a[href]');
                 if (holder && VIDEO_LINK.test(holder.href) && !IMG_URL.test(holder.href)) return null;
                 const box = img.getBoundingClientRect();
@@ -1523,7 +1561,7 @@
         safeShown = true;
 
         const host = document.createElement('div');
-        host.dataset.webSuiteSafe = '';
+        host.dataset.weboaSafe = '';
         host.style.cssText = 'position:fixed!important;left:50%!important;bottom:20px!important;transform:translateX(-50%)!important;z-index:2147483647!important;';
         const root = host.attachShadow({ mode: 'open' });
         const box = document.createElement('div');

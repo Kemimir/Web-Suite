@@ -1,6 +1,6 @@
-# Web Suite — By Kemir (extensão para Chrome, Brave e Edge)
+# WEBoa — By Kemir (extensão para Chrome, Brave e Edge)
 
-Conexão, desempenho e privacidade para qualquer site. É a versão em extensão do script Web Suite 4 (que ficou em `..\legado`).
+Conexão, desempenho e privacidade para qualquer site. É a versão em extensão do script WEBoa 4 (que ficou em `..\legado`).
 
 ## Instalar
 1. `brave://extensions` (ou `chrome://extensions`) → ative o **Modo do desenvolvedor**.
@@ -37,7 +37,7 @@ Conexão, desempenho e privacidade para qualquer site. É a versão em extensão
 ## Novidades da 1.4.0
 - **Vitais da página** (aba Diagnóstico): LCP, FCP, CLS e INP em tempo real, com a classificação do Google (bom, regular, ruim). Leitura passiva, funciona em qualquer página, inclusive na Crunchyroll. O INP só aparece depois que você interage com a página.
 - **Abas mais pesadas** (aba Diagnóstico): cada aba informa a memória JavaScript a cada minuto, e o popup lista as 8 maiores com um botão **Suspender**. É só uma parte da memória real da aba (imagens e vídeo ficam de fora): serve para comparar abas entre si.
-- **Pausar vídeos que começam sozinhos** (grupo Mídia, desligado por padrão): pausa vídeo e áudio que começam sem nenhuma ativação sua na página. Depois do primeiro clique ou toque, tudo funciona normal. Streaming e chamadas (YouTube, Twitch, Netflix, Prime Video, Spotify, Meet, Zoom, Discord…) são exceção. Um elemento com `data-web-suite-keep-playing` nunca é pausado.
+- **Pausar vídeos que começam sozinhos** (grupo Mídia, desligado por padrão): pausa vídeo e áudio que começam sem nenhuma ativação sua na página. Depois do primeiro clique ou toque, tudo funciona normal. Streaming e chamadas (YouTube, Twitch, Netflix, Prime Video, Spotify, Meet, Zoom, Discord…) são exceção. Um elemento com `data-weboa-keep-playing` nunca é pausado.
 - **Modo leve de imagens (experimental)** (grupo Desempenho, desligado por padrão): em páginas com 80 ou mais imagens, troca por um espaço em branco do mesmo tamanho as que ficaram a mais de ~3 telas, e devolve antes de você chegar. Não ativa em páginas pequenas.
 - Dois contadores novos na economia acumulada: vídeos pausados e imagens devolvidas.
 - Não roda na Crunchyroll (perfil de convivência).

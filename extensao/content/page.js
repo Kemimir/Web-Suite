@@ -7,8 +7,8 @@
 (() => {
     'use strict';
 
-    if (window.__webSuitePage) return;
-    window.__webSuitePage = true;
+    if (window.__weboaPage) return;
+    window.__weboaPage = true;
 
     let on = true;
     let blocked = [];

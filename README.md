@@ -1,4 +1,4 @@
-# Web Suite — By Kemir
+# WEBoa — By Kemir
 
 Extensão para **Chrome, Brave e Edge** (Manifest V3) com foco em **conexão, desempenho bruto e privacidade** em qualquer site. Convive com a extensão [BOAnimes](https://github.com/Kemimir/BOAnimes) na Crunchyroll sem disputar a página.
 
@@ -22,7 +22,7 @@ Extensão para **Chrome, Brave e Edge** (Manifest V3) com foco em **conexão, de
 Mais no painel: **Vitais da página** (LCP, FCP, CLS, INP), **abas mais pesadas** com botão Suspender, **suspensão automática** de abas inativas, **bloqueio de scripts de terceiros** em 3 níveis, **exclusão por página, por site ou por função**, **modo seguro**, **5 temas do painel** e **exportar/importar** configurações e o atalho **Alt+Shift+W** para excluir/incluir a página atual.
 
 ## Compatibilidade com a BOAnimes
-Em `crunchyroll.com` a Web Suite entra em **modo de convivência**: o bloqueio de pop-ups nem é carregado, só funcionam limpeza de endereço, um preconnect e o aviso de conexão, não há `MutationObserver` e nada mexe em `fetch`, `XMLHttpRequest` ou `addEventListener`. O bloqueio de rede também exclui a Crunchyroll.
+Em `crunchyroll.com` a WEBoa entra em **modo de convivência**: o bloqueio de pop-ups nem é carregado, só funcionam limpeza de endereço, um preconnect e o aviso de conexão, não há `MutationObserver` e nada mexe em `fetch`, `XMLHttpRequest` ou `addEventListener`. O bloqueio de rede também exclui a Crunchyroll.
 
 ## Observações
 - O Brave não tem a API de regras de especulação; lá o pré-carregamento usa `<link rel=prefetch>`.
@@ -35,4 +35,4 @@ Em `crunchyroll.com` a Web Suite entra em **modo de convivência**: o bloqueio d
 ---
 
 ### English summary
-Web Suite is a Manifest V3 browser extension (Chrome, Brave, Edge) for connection, raw page performance and privacy: link prefetch, lazy loading, YouTube facades, popup blocking, tracker/ping removal, tab suspension, page themes, Core Web Vitals panel and more. It runs entirely locally with no telemetry, and has a coexistence profile for the BOAnimes extension on Crunchyroll. Load the `extensao` folder as an unpacked extension. MIT licensed.
+WEBoa is a Manifest V3 browser extension (Chrome, Brave, Edge) for connection, raw page performance and privacy: link prefetch, lazy loading, YouTube facades, popup blocking, tracker/ping removal, tab suspension, page themes, Core Web Vitals panel and more. It runs entirely locally with no telemetry, and has a coexistence profile for the BOAnimes extension on Crunchyroll. Load the `extensao` folder as an unpacked extension. MIT licensed.
