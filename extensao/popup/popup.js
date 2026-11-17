@@ -305,7 +305,7 @@
         const siteOff = hostOverrides().blocker === false;
         $('blockToggle').setAttribute('aria-checked', String(!siteOff && level > 0));
         $('blockNote').textContent = level === 0
-            ? 'Bloqueio desligado nos Padrões (aba Padrões → Scripts de terceiros).'
+            ? 'Bloqueio desligado nos Padrões (engrenagem → Padrões → Scripts de terceiros).'
             : `Nível atual: ${LEVEL_NAMES[level]}. Vale pelo site inteiro.`;
     }
 
@@ -448,7 +448,7 @@
 
     function renderMaster() {
         $('masterToggle').setAttribute('aria-checked', String(!store.off));
-        $('masterLabel').textContent = store.off ? 'Desligada' : 'Ligada';
+        $('masterLabel').textContent = store.off ? 'Extensão desligada' : 'Extensão ligada';
         document.body.classList.toggle('is-off', store.off);
     }
 
@@ -476,6 +476,10 @@
     function setTab(name) {
         document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', String(t.dataset.tab === name)));
         for (const id of ['page', 'defaults', 'diag']) $('tab-' + id).hidden = id !== name;
+        // A engrenagem abre os ajustes (Padrões e Diagnóstico); de novo, volta para a página.
+        const inSettings = name !== 'page';
+        $('settingsNav').hidden = !inSettings;
+        $('settingsBtn').setAttribute('aria-expanded', String(inSettings));
         if (name === 'diag') refreshState(true);
     }
 
@@ -497,6 +501,7 @@
         await refreshState();
 
         document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => setTab(t.dataset.tab)));
+        $('settingsBtn').addEventListener('click', () => setTab($('settingsBtn').getAttribute('aria-expanded') === 'true' ? 'page' : 'defaults'));
 
         const master = $('masterToggle');
         const flipMaster = async () => {

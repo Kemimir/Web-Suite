@@ -23,6 +23,9 @@ Conexão, desempenho e privacidade para qualquer site. É a versão em extensão
 | Mídia | pausar vídeos mudos fora da tela, **pausar vídeo de feed que sai da tela (Instagram, TikTok, X)**, pausar ao ocultar a aba, reduzir preload, remover autoplay, pausar vídeos que começam sozinhos |
 | Aparência | **tema das páginas (escuro, AMOLED, sépia, alto contraste)**, **ocultar Shorts do YouTube**, **ocultar cookies e "abrir no app"**, ocultar banners conhecidos, ocultar barras laterais |
 
+## Novidades da 1.6.2
+- **Painel igual ao do BOAnimes**: cabeçalho com "By Kemir", chave "Extensão ligada" e engrenagem. A tela inicial mostra só "Nesta página"; a engrenagem abre os ajustes (Padrões e Diagnóstico) e, clicando de novo, volta. Filtros por tipo em pílulas e cartões com o mesmo estilo.
+
 ## Novidades da 1.6.1
 - **Visual RedRat**: painel em vermelho RedRat por padrão (o laranja antigo continua como tema "Laranja") e ícones novos, sólidos e minimalistas: um relógio com raio no centro. Há também versões vermelhas dos ícones (`icons/icon-red-*.png`) para barras de ferramentas claras.
 

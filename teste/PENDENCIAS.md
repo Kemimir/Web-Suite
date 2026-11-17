@@ -47,3 +47,7 @@ Preencher conforme os testes nos sites reais forem feitos. Formato: [ ] aberto, 
 ## Visual RedRat (2026-11-17)
 - Painel agora vermelho (#f02043) por padrao; tema "Laranja" (amber) mantido como opcao. Conferido so em captura do popup-test.
 - Pendente: recarregar a extensao no Brave e ver o painel real, nos temas claro/azul/roxo. Nada enviado ao GitHub.
+
+## Painel igual ao BOAnimes (2026-11-17)
+- Cabecalho, chave "Extensao ligada", engrenagem para Padroes/Diagnostico, cartoes e pilulas no estilo do BOAnimes. Testado em Edge headless com o shim: a engrenagem abre os ajustes, a aba Diagnostico troca e volta para a pagina.
+- Pendente: conferir no Brave com a extensao recarregada; versao ainda 1.6.1 (subir como 1.6.2 junto com o proximo envio).
