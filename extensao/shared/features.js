@@ -103,6 +103,24 @@
         sepia: { name: 'Sépia (leitura)', bg: '#f4ecd8', panel: '#efe4c8', code: '#e8dcc0', text: '#433422', link: '#7a4a1c', visited: '#6b3d6b', border: '#c9b88f', scheme: 'light' },
         contrast: { name: 'Alto contraste', bg: '#000000', panel: '#000000', code: '#000000', text: '#ffffff', link: '#ffff66', visited: '#ff9cff', border: '#ffffff', scheme: 'dark' },
     };
+    // Partes do tema das páginas, cada uma com a sua chave liga/desliga (ws_config.themeParts).
+    const THEME_PARTS = [
+        ['scheme', 'Modo escuro do navegador', 'Avisa o site e o navegador de que a página é escura: barras de rolagem, menus e campos nativos.', true],
+        ['background', 'Fundos', 'Fundo da página e de seções, cabeçalhos, rodapés, menus laterais e janelas.', true],
+        ['text', 'Texto', 'Cor de parágrafos, listas e títulos.', true],
+        ['links', 'Links', 'Cor dos links e dos já visitados.', true],
+        ['tables', 'Tabelas e código', 'Fundo e borda de tabelas, trechos de código e citações.', true],
+        ['forms', 'Campos de formulário', 'Cor de caixas de texto, áreas de texto e listas de seleção.', true],
+        ['scrollbars', 'Barras de rolagem', 'Barra de rolagem na cor do tema.', true],
+        ['selection', 'Seleção de texto', 'Cor do texto marcado com o mouse.', true],
+        ['dim', 'Escurecer imagens', 'Reduz um pouco o brilho das imagens para não ofuscar (não mexe em vídeos).', false],
+        ['sites', 'Correções por site', 'Ajustes conhecidos de sites que misturam o tema próprio com o seu (hoje: faixa cinza da resposta por IA do Google).', true],
+    ];
+    const themePartsOf = raw => {
+        const out = {};
+        for (const [id, , , def] of THEME_PARTS) out[id] = raw && typeof raw[id] === 'boolean' ? raw[id] : def;
+        return out;
+    };
     const PANEL_THEMES = { orange: 'Laranja (padrão)', graphite: 'Grafite', light: 'Claro', blue: 'Azul', purple: 'Roxo' };
 
     const normalizeHost = x => String(x).trim().toLowerCase().replace(/\.+$/, '');
@@ -122,5 +140,5 @@
         }
     };
 
-    root.WS = { FEATURES, PROFILES, AUTOPLAY_ALLOW, PROTECTED_APPS, BLOCK_CATEGORIES, ADAPTIVE_TARGETS, PAGE_THEMES, PANEL_THEMES, matchesHost, profileFor, pageKeyOf, normalizeHost };
+    root.WS = { FEATURES, PROFILES, AUTOPLAY_ALLOW, PROTECTED_APPS, BLOCK_CATEGORIES, ADAPTIVE_TARGETS, PAGE_THEMES, PANEL_THEMES, THEME_PARTS, themePartsOf, matchesHost, profileFor, pageKeyOf, normalizeHost };
 })(typeof self !== 'undefined' ? self : this);

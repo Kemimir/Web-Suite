@@ -23,6 +23,10 @@ Conexão, desempenho e privacidade para qualquer site. É a versão em extensão
 | Mídia | pausar vídeos mudos fora da tela, **pausar vídeo de feed que sai da tela (Instagram, TikTok, X)**, pausar ao ocultar a aba, reduzir preload, remover autoplay, pausar vídeos que começam sozinhos |
 | Aparência | **tema das páginas (escuro, AMOLED, sépia, alto contraste)**, **ocultar Shorts do YouTube**, **ocultar cookies e "abrir no app"**, ocultar banners conhecidos, ocultar barras laterais |
 
+## Novidades da 1.6.0
+- **Funções em abas por tipo**: nas abas Esta página e Padrões, as funções ficam separadas por tipo (Conexão, Privacidade, Desempenho, Mídia, Aparência). Em Padrões há também **Temas** (tema do painel, tema das páginas e as chaves abaixo) e **Backup**. Os ajustes de rede, de abas inativas e de hosts aparecem junto do tipo a que pertencem.
+- **Tema das páginas por tipo de elemento** (Padrões → Temas): chaves liga/desliga para modo escuro do navegador, fundos, texto, links, tabelas e código, campos de formulário, barras de rolagem, seleção de texto, escurecer imagens (desligada) e correções por site (hoje: faixa cinza da resposta por IA do Google). A mudança vale na hora, sem recarregar.
+
 ## Novidades da 1.5.0
 - **Temas**: 5 temas para o painel (laranja, grafite, claro, azul, roxo) e 4 para as páginas (escuro, AMOLED, sépia, alto contraste), em Padrões.
 - **Ampliar imagens**: ao passar o mouse sobre uma imagem de pelo menos 120 px aparece o botão ⤢; ele abre a imagem grande numa camada na própria página (clique para aproximar, Esc ou clique fora para fechar), usando a maior versão disponível (link direto para a imagem ou o maior item do `srcset`). Ligada por padrão; só com mouse; indisponível na Crunchyroll.

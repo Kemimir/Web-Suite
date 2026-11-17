@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+body{width:1700px;background:#080808;color:#fff;font-family:"Segoe UI",system-ui,sans-serif;padding:60px}
+h1{font-size:46px;font-weight:700}.sub{color:#b8b8b8;font-size:24px;margin-top:6px}.bar{width:140px;height:4px;background:#ff640a;margin-top:18px}
+.themes{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:40px}
+.t{border-radius:18px;padding:26px 24px;height:430px;border:1px solid #444;position:relative;overflow:hidden}
+.t small{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:14px;font-weight:700}
+.t h2{font-size:26px;margin-bottom:10px}
+.t p{font-size:16px;line-height:1.5;margin-bottom:12px}
+.t a{text-decoration:underline;font-weight:600}
+.t table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+.t td,.t th{padding:7px 9px;border:1px solid}
+.t code{display:block;padding:9px 11px;font:14px Consolas,monospace;margin:10px 0;border-radius:6px}
+.t input{width:100%;padding:9px 11px;font:15px inherit;border:1px solid;border-radius:6px;margin-top:6px}
+.t .img{height:52px;border-radius:8px;margin-top:12px;background:linear-gradient(135deg,#d9803a,#5a4a9a)}
+.t .sel{padding:1px 4px}
+.parts{margin-top:46px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.part{border:1px solid #2c2c2c;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;font-size:17px;font-weight:600;background:#0e0e10}
+.sw{margin-left:auto;flex:none;width:42px;height:23px;border-radius:99px;background:#ff640a;position:relative}
+.sw::after{content:"";position:absolute;right:3px;top:3px;width:17px;height:17px;border-radius:50%;background:#fff}
+.sw.off{background:#333}.sw.off::after{right:auto;left:3px}
+h3.h{font-size:28px;margin-top:50px}.sub2{color:#a8a8a8;font-size:19px;margin-top:6px}
+.foot{color:#6c6c6c;font-size:17px;margin-top:48px}
+</style></head><body>
+<h1>Themes — for pages and for the panel</h1>
+<div class="sub">Dark · AMOLED · Sepia · High contrast, with a switch for each kind of element</div><div class="bar"></div>
+<div class="themes">
+  <div class="t" style="background:#121212;color:#eee;border-color:#555"><small>Dark</small><h2>Reading</h2><p>Body text with a <a style="color:#8ab4f8">link</a> and a <a style="color:#c6a5f7">visited link</a>.</p><table><tr><th style="background:#242424;border-color:#555">Name</th><th style="background:#242424;border-color:#555">Size</th></tr><tr><td style="background:#242424;border-color:#555">Alpha</td><td style="background:#242424;border-color:#555">12</td></tr></table><code style="background:#242424">const x = 42;</code><input style="background:#242424;color:#eee;border-color:#555" value="Search…"><div class="img"></div></div>
+  <div class="t" style="background:#000;color:#e6e6e6;border-color:#3a3a3a"><small>AMOLED</small><h2>Reading</h2><p>Body text with a <a style="color:#7db3ff">link</a> and a <a style="color:#c4a0f5">visited link</a>.</p><table><tr><th style="background:#0d0d0d;border-color:#3a3a3a">Name</th><th style="background:#0d0d0d;border-color:#3a3a3a">Size</th></tr><tr><td style="background:#0d0d0d;border-color:#3a3a3a">Alpha</td><td style="background:#0d0d0d;border-color:#3a3a3a">12</td></tr></table><code style="background:#0d0d0d">const x = 42;</code><input style="background:#0d0d0d;color:#e6e6e6;border-color:#3a3a3a" value="Search…"><div class="img"></div></div>
+  <div class="t" style="background:#f4ecd8;color:#433422;border-color:#c9b88f"><small>Sepia</small><h2>Reading</h2><p>Body text with a <a style="color:#7a4a1c">link</a> and a <a style="color:#6b3d6b">visited link</a>.</p><table><tr><th style="background:#e8dcc0;border-color:#c9b88f">Name</th><th style="background:#e8dcc0;border-color:#c9b88f">Size</th></tr><tr><td style="background:#e8dcc0;border-color:#c9b88f">Alpha</td><td style="background:#e8dcc0;border-color:#c9b88f">12</td></tr></table><code style="background:#e8dcc0">const x = 42;</code><input style="background:#e8dcc0;color:#433422;border-color:#c9b88f" value="Search…"><div class="img"></div></div>
+  <div class="t" style="background:#000;color:#fff;border-color:#fff"><small>High contrast</small><h2>Reading</h2><p>Body text with a <a style="color:#ff6">link</a> and a <a style="color:#ff9cff">visited link</a>.</p><table><tr><th style="border-color:#fff">Name</th><th style="border-color:#fff">Size</th></tr><tr><td style="border-color:#fff">Alpha</td><td style="border-color:#fff">12</td></tr></table><code style="border:1px solid #fff">const x = 42;</code><input style="background:#000;color:#fff;border-color:#fff" value="Search…"><div class="img"></div></div>
+</div>
+<h3 class="h">A switch for each kind of element</h3>
+<div class="sub2">Turn parts of the page theme on or off live, without reloading.</div>
+<div class="parts" style="margin-top:22px">
+  <div class="part">Browser dark mode<div class="sw"></div></div><div class="part">Backgrounds<div class="sw"></div></div><div class="part">Text<div class="sw"></div></div><div class="part">Links<div class="sw"></div></div><div class="part">Tables and code<div class="sw"></div></div>
+  <div class="part">Form fields<div class="sw"></div></div><div class="part">Scrollbars<div class="sw"></div></div><div class="part">Text selection<div class="sw"></div></div><div class="part">Dim images<div class="sw off"></div></div><div class="part">Per-site fixes<div class="sw"></div></div>
+</div>
+<div class="foot">Mock-up with original placeholder content.</div>
+</body></html>

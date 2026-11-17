@@ -39,3 +39,7 @@ Preencher conforme os testes nos sites reais forem feitos. Formato: [ ] aberto, 
 ## Google, resposta por IA no tema AMOLED (corrigido no código, falta ver com a extensão recarregada)
 - Problema: o degradê do "Mostrar mais" e a caixa quadrada atrás do botão usavam o cinza do tema escuro do Google (rgb 34,36,42) e viravam faixas cinzas sobre o fundo preto.
 - Correção: no módulo `dark`, só em google.*, troca esse cinza do degradê pela cor do tema e deixa a caixa quadrada transparente (desfeito ao desligar). Visto numa simulação na página real; falta conferir com a extensão recarregada.
+
+## 1.6.0 (abas por tipo + tema por elemento)
+- OK no teste local: abas de tipo no painel (Esta página e Padrões), Temas/Backup, chaves do tema gravam e aplicam na hora (links, fundos, formulários, escurecer imagens).
+- Falta ver em sites reais com a extensão recarregada (aparência do painel com as abas em cada tema do painel).

@@ -105,3 +105,10 @@ select:focus-visible { outline: 2px solid var(--acc); outline-offset: 1px; }
 .foot { padding: 8px 16px 12px; border-top: 1px solid var(--line); color: var(--txt2); font-size: 11px; text-align: center; }
 .foot a { color: var(--acc); text-decoration: none; }
 .foot a:hover { text-decoration: underline; }
+
+/* Abas por tipo de função */
+.cats { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 2px; }
+.cat { padding: 5px 11px; border: 1px solid var(--line); border-radius: 999px; background: none; color: var(--txt2); font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+.cat:hover { color: var(--txt); border-color: rgba(var(--acc-rgb), .6); }
+.cat[aria-selected="true"] { border-color: var(--acc); background: rgba(var(--acc-rgb), .18); color: var(--txt); }
+.cat:focus-visible { outline: 2px solid var(--acc); outline-offset: 1px; }

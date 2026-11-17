@@ -45,6 +45,7 @@
         </div>
         <div id="quickList" class="chips" aria-live="polite"></div>
       </div>
+      <div id="catsPage" class="cats" role="tablist" aria-label="Tipos de função"></div>
       <div id="pageFeatures"></div>
       <div class="actions">
         <button id="resetPage" class="btn" type="button">Restaurar padrões desta página</button>
@@ -54,14 +55,18 @@
 
     <section id="tab-defaults" class="pane" hidden>
       <p class="muted small">Valem para todas as páginas, a menos que a página tenha uma escolha própria.</p>
+      <div id="catsDefaults" class="cats" role="tablist" aria-label="Tipos de função"></div>
       <div id="defaultFeatures"></div>
-      <div class="field">
+      <div class="field" data-cat="Temas">
         <label for="panelTheme">Tema do painel</label>
         <select id="panelTheme"></select>
         <label for="pageTheme">Tema das páginas (função "Tema das páginas")</label>
         <select id="pageTheme"></select>
+        <h3 class="subhead">O que o tema das páginas muda</h3>
+        <p class="muted small">Liga ou desliga cada tipo de elemento. Vale para as páginas em que a função "Tema das páginas" estiver ligada.</p>
+        <div id="themeParts"></div>
       </div>
-      <div class="field">
+      <div class="field" data-cat="Privacidade">
         <label for="blockLevel">Scripts de terceiros (bloqueio pela rede)</label>
         <select id="blockLevel">
           <option value="0">Nenhum (padrão)</option>
@@ -70,7 +75,7 @@
         </select>
         <p class="muted small">Não mexe em login nem pagamento e nunca na Crunchyroll. O número de bloqueios aparece no ícone da extensão.</p>
       </div>
-      <div class="field">
+      <div class="field" data-cat="Desempenho">
         <div class="row between">
           <div><strong>Suspender abas inativas</strong><p class="muted small">Libera a memória das abas paradas (elas recarregam ao voltar). Abas com áudio, fixadas ou com formulário preenchido ficam de fora.</p></div>
           <div id="tabsToggle" class="switch" role="switch" tabindex="0" aria-label="Suspender abas inativas"></div>
@@ -85,15 +90,15 @@
         <label for="tabsProtect">Sites que nunca suspendem (um por linha)</label>
         <textarea id="tabsProtect" rows="3" spellcheck="false" placeholder="meu-app.example"></textarea>
       </div>
-      <div class="field">
+      <div class="field" data-cat="Privacidade">
         <label for="blockedHosts">Hosts sempre bloqueados (um por linha)</label>
         <textarea id="blockedHosts" rows="3" spellcheck="false" placeholder="anuncios.example"></textarea>
       </div>
-      <div class="field">
+      <div class="field" data-cat="Privacidade">
         <label for="allowedHosts">Hosts liberados para abrir pop-up (um por linha)</label>
         <textarea id="allowedHosts" rows="3" spellcheck="false" placeholder="accounts.google.com"></textarea>
       </div>
-      <div class="field">
+      <div class="field" data-cat="Backup">
         <label>Backup das configurações</label>
         <div class="actions">
           <button id="cfgExport" class="btn" type="button">Exportar</button>

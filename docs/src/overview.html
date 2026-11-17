@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+body{width:1700px;background:#080808;color:#fff;font-family:"Segoe UI",system-ui,sans-serif;padding:60px}
+h1{font-size:46px;font-weight:700}
+.sub{color:#b8b8b8;font-size:24px;margin-top:6px}
+.bar{width:140px;height:4px;background:#ff640a;margin-top:18px}
+.stage{margin-top:36px;height:760px;border:1px solid #333;border-radius:26px;position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1d2e 0%,#2a1c3a 45%,#3a1d1d 100%)}
+.shapes i{position:absolute;border-radius:50%;opacity:.5}
+.page{position:absolute;left:60px;top:70px;width:860px;bottom:60px;background:#101114;border:1px solid #333;border-radius:14px;padding:26px 30px}
+.page .nav{display:flex;gap:10px;margin-bottom:22px}
+.page .nav b{background:#222;border-radius:99px;padding:8px 18px;font-size:15px;font-weight:600}
+.page h2{font-size:30px;margin-bottom:10px}
+.page p{color:#aaa;font-size:16px;line-height:1.5;max-width:700px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.card{height:150px;border-radius:12px;border:1px solid #2c2c2c;position:relative;overflow:hidden}
+.card.v::after{content:"";position:absolute;left:50%;top:50%;width:0;height:0;border-left:26px solid #fff;border-top:16px solid transparent;border-bottom:16px solid transparent;transform:translate(-30%,-50%);opacity:.8}
+.card .zoom{position:absolute;right:8px;top:8px;width:34px;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.4);background:rgba(18,18,18,.85);display:grid;place-items:center;font-weight:700;font-size:18px}
+.popup{position:absolute;right:60px;top:70px;width:560px;background:#0e0e10;border:1px solid #3a3a3a;border-radius:16px;padding:18px 20px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.ph{display:flex;align-items:center;gap:12px}
+.ph img{width:40px;height:40px}.ph h3{font-size:22px}.ph small{color:#ff640a;font-size:12px;margin-left:4px}
+.sw{margin-left:auto;width:44px;height:24px;border-radius:99px;background:#ff640a;position:relative}
+.sw::after{content:"";position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff}
+.tabs{display:flex;gap:18px;border-bottom:1px solid #2a2a2a;margin-top:14px;font-size:16px;color:#aaa}
+.tabs span{padding:8px 4px}.tabs .on{color:#fff;border-bottom:2px solid #ff640a}
+.cats{display:flex;gap:8px;margin:16px 0 6px;flex-wrap:wrap}
+.cats span{border:1px solid #3a3a3a;border-radius:99px;padding:5px 13px;font-size:13px;color:#bbb;font-weight:600}
+.cats .on{border-color:#ff640a;background:rgba(255,100,10,.18);color:#fff}
+.row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #1d1d1d}
+.row>div:first-child{flex:1}.row h4{font-size:15px}.row p{color:#8d8d8d;font-size:12px;margin-top:2px}
+.row .sw{width:38px;height:21px}.row .sw::after{width:15px;height:15px}
+.row .sw.off{background:#333}.row .sw.off::after{right:auto;left:3px}
+.n{position:absolute;width:38px;height:38px;border-radius:50%;background:#ff640a;color:#000;font-weight:700;font-size:20px;display:grid;place-items:center;border:3px solid #080808}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 50px;margin-top:44px}
+.legend .it{display:flex;gap:16px}.legend .n{position:static;flex:none}
+.legend h3{font-size:26px}.legend p{color:#a8a8a8;font-size:19px;line-height:1.45;margin-top:6px}
+.foot{color:#6c6c6c;font-size:17px;margin-top:50px}
+</style></head><body>
+<h1>WEBoa — faster, cleaner, private browsing</h1>
+<div class="sub">32 functions · themes per element · image viewer · BOAnimes-friendly</div><div class="bar"></div>
+<div class="stage">
+  <div class="shapes"><i style="left:-80px;top:240px;width:520px;height:520px;background:#3b6b5a"></i><i style="right:200px;top:-120px;width:560px;height:560px;background:#d9803a"></i><i style="left:520px;bottom:-200px;width:520px;height:520px;background:#5a4a9a"></i></div>
+  <div class="page">
+    <div class="nav"><b>Home</b><b>Videos</b><b>Photos</b><b>Search</b></div>
+    <h2>Sample page</h2>
+    <p>Original placeholder content. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+    <div class="grid">
+      <div class="card" style="background:linear-gradient(135deg,#4a9aa0,#2c5a4a)"><div class="zoom">⤢</div></div>
+      <div class="card v" style="background:linear-gradient(135deg,#a04a6a,#4a2c5a)"></div>
+      <div class="card" style="background:linear-gradient(135deg,#d9803a,#8a3a2a)"></div>
+      <div class="card" style="background:linear-gradient(135deg,#5a4a9a,#2a3a6a)"></div>
+      <div class="card v" style="background:linear-gradient(135deg,#4a8a3a,#2a5a2a)"></div>
+      <div class="card" style="background:linear-gradient(135deg,#9a8a3a,#5a4a2a)"></div>
+    </div>
+  </div>
+  <div class="popup">
+    <div class="ph"><img src="../../extensao/icons/icon-48.png"><h3>WEBoa <small>By Kemir</small></h3><div class="sw"></div></div>
+    <div class="tabs"><span class="on">This page</span><span>Defaults</span><span>Diagnostics</span></div>
+    <div class="cats"><span>Connection</span><span>Privacy</span><span>Performance</span><span>Media</span><span class="on">Appearance</span></div>
+    <div class="row"><div><h4>Page theme</h4><p>Dark, AMOLED, sepia or high contrast.</p></div><div class="sw"></div></div>
+    <div class="row"><div><h4>Enlarge images without a new tab</h4><p>Hover an image and click ⤢.</p></div><div class="sw"></div></div>
+    <div class="row"><div><h4>Hide YouTube Shorts</h4><p>Removes the Shorts shelves and tab.</p></div><div class="sw off"></div></div>
+    <div class="row"><div><h4>Hide cookie banners</h4><p>Known consent bars and “open in app”.</p></div><div class="sw off"></div></div>
+    <div class="row"><div><h4>Unlock text selection and copy</h4><p>For sites that block right-click.</p></div><div class="sw off"></div></div>
+  </div>
+  <div class="n" style="left:262px;top:283px">1</div>
+  <div class="n" style="right:46px;top:176px">2</div>
+  <div class="n" style="left:520px;top:262px">3</div>
+  <div class="n" style="left:1251px;top:145px">4</div>
+  <div class="n" style="left:1511px;top:84px">5</div>
+</div>
+<div class="legend">
+  <div class="it"><div class="n">1</div><div><h3>Image viewer</h3><p>A ⤢ button on big images opens them large, in place. Wheel zoom and drag. Never on videos.</p></div></div>
+  <div class="it"><div class="n">2</div><div><h3>Functions by type</h3><p>Connection, Privacy, Performance, Media and Appearance each get their own tab.</p></div></div>
+  <div class="it"><div class="n">3</div><div><h3>Video-safe</h3><p>Lazy loading, facades and feed pausing keep pages light without touching players.</p></div></div>
+  <div class="it"><div class="n">4</div><div><h3>Per-site control</h3><p>Turn any function off for one page or a whole site, or all at once with Alt+Shift+W.</p></div></div>
+  <div class="it"><div class="n">5</div><div><h3>Everything local</h3><p>No accounts, no telemetry. Settings stay in your browser and export to a file.</p></div></div>
+</div>
+<div class="foot">Mock-up with original placeholder art. Unofficial fan project, not affiliated with any site shown.</div>
+</body></html>

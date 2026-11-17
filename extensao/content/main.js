@@ -5,7 +5,7 @@
 (() => {
     'use strict';
 
-    const { FEATURES, ADAPTIVE_TARGETS, AUTOPLAY_ALLOW, PAGE_THEMES, matchesHost, profileFor, pageKeyOf } = self.WS;
+    const { FEATURES, ADAPTIVE_TARGETS, AUTOPLAY_ALLOW, PAGE_THEMES, themePartsOf, matchesHost, profileFor, pageKeyOf } = self.WS;
 
     const INSTANCE = '__weboaExtInstalled__';
     if (window[INSTANCE]) return;
@@ -22,7 +22,7 @@
     let defaultsStore = {};           // { id: boolean } — padrões globais do usuário
     let pagesStore = {};              // { "origem/caminho": { excluded, overrides } }
     let hostsStore = {};              // { "host": { overrides } } — vale para o site inteiro
-    let config = { blockedHosts: [], allowedPopupHosts: [], pageTheme: 'dark' };
+    let config = { blockedHosts: [], allowedPopupHosts: [], pageTheme: 'dark', themeParts: themePartsOf(null) };
     let globalOff = false;            // chave geral da extensão
     let loaded = false;
     let domReady = false;
@@ -698,16 +698,23 @@
 
         dark() {
             const t = PAGE_THEMES[config.pageTheme] || PAGE_THEMES.dark;
-            const style = styleModule(`
-            html,body { background-color:${t.bg}!important; color:${t.text}!important; color-scheme:${t.scheme}!important }
-            main,article,section,header,footer,nav,aside,dialog { background-color:${t.panel}!important; color:${t.text}!important }
-            p,li,label,h1,h2,h3,h4,h5,h6 { color:${t.text}!important }
-            a { color:${t.link}!important }
-            a:visited { color:${t.visited}!important }
-            table,th,td,pre,code,kbd,samp,blockquote { background-color:${t.code}!important; color:${t.text}!important; border-color:${t.border}!important }
-            input,textarea,select,button { color-scheme:${t.scheme} }
-        `);
-            if (!/(^|\.)google\.[a-z.]+$/.test(location.hostname)) return style;
+            const on = themePartsOf(config.themeParts);
+            const css = [];
+            const bg = on.background ? `background-color:${t.bg}!important;` : '';
+            const fg = on.text ? `color:${t.text}!important;` : '';
+            const sc = on.scheme ? `color-scheme:${t.scheme}!important` : '';
+            if (bg || fg || sc) css.push(`html,body { ${bg}${fg}${sc} }`);
+            if (on.background) css.push(`main,article,section,header,footer,nav,aside,dialog { background-color:${t.panel}!important; color:${t.text}!important }`);
+            if (on.text) css.push(`p,li,label,h1,h2,h3,h4,h5,h6 { color:${t.text}!important }`);
+            if (on.links) css.push(`a { color:${t.link}!important } a:visited { color:${t.visited}!important }`);
+            if (on.tables) css.push(`table,th,td,pre,code,kbd,samp,blockquote { background-color:${t.code}!important; color:${t.text}!important; border-color:${t.border}!important }`);
+            if (on.forms) css.push(`input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=image]):not([type=button]):not([type=submit]),textarea,select { background-color:${t.code}!important; color:${t.text}!important; border-color:${t.border}!important }`);
+            else if (on.scheme) css.push(`input,textarea,select,button { color-scheme:${t.scheme} }`);
+            if (on.scrollbars) css.push(`html { scrollbar-color:${t.border} ${t.bg} }`);
+            if (on.selection) css.push(`::selection { background:${t.link}; color:${t.bg} }`);
+            if (on.dim && t.scheme === 'dark') css.push(`img:not([data-weboa-lite]) { filter:brightness(.88) }`);
+            const style = styleModule(css.join('\n'));
+            if (!on.sites || !/(^|\.)google\.[a-z.]+$/.test(location.hostname)) return style;
 
             // Google: o degradê do "Mostrar mais" (resposta por IA) termina no cinza do tema
             // escuro do próprio Google e vira uma faixa cinza sobre o fundo do tema. Troca a
@@ -1463,14 +1470,15 @@
         pagesStore = values[STORE.pages] && typeof values[STORE.pages] === 'object' ? values[STORE.pages] : {};
         hostsStore = values[STORE.hosts] && typeof values[STORE.hosts] === 'object' ? values[STORE.hosts] : {};
         const c = values[STORE.config] || {};
-        const before = config.pageTheme;
+        const before = config.pageTheme + JSON.stringify(config.themeParts);
         config = {
             blockedHosts: Array.isArray(c.blockedHosts) ? c.blockedHosts : [],
             allowedPopupHosts: Array.isArray(c.allowedPopupHosts) ? c.allowedPopupHosts : [],
             pageTheme: PAGE_THEMES[c.pageTheme] ? c.pageTheme : 'dark',
+            themeParts: themePartsOf(c.themeParts),
         };
         // Trocou o tema das páginas: o módulo é refeito no próximo reconcile.
-        if (before !== config.pageTheme && active.has('dark')) {
+        if (before !== config.pageTheme + JSON.stringify(config.themeParts) && active.has('dark')) {
             try {
                 active.get('dark').stop();
             } catch { /* já removido */ }

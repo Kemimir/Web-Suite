@@ -1,11 +1,12 @@
 (() => {
     'use strict';
 
-    const { FEATURES, PAGE_THEMES, PANEL_THEMES, pageKeyOf, profileFor } = self.WS;
+    const { FEATURES, PAGE_THEMES, PANEL_THEMES, THEME_PARTS, themePartsOf, pageKeyOf, profileFor } = self.WS;
     const STORE = { defaults: 'ws_defaults', pages: 'ws_pages', hosts: 'ws_hosts', config: 'ws_config', off: 'ws_off', tabs: 'ws_tabs', stats: 'ws_stats' };
     const $ = id => document.getElementById(id);
 
     let tab = null;
+    let cat = 'Conexão';              // tipo de função mostrado nas listas
     let key = '';
     let host = '';
     let state = null;                // resposta do script de conteúdo (null = página sem a extensão)
@@ -67,6 +68,7 @@
                 blockLevel: [0, 1, 2].includes(Number(c.blockLevel)) ? Number(c.blockLevel) : 0,
                 theme: PANEL_THEMES[c.theme] ? c.theme : 'orange',
                 pageTheme: PAGE_THEMES[c.pageTheme] ? c.pageTheme : 'dark',
+                themeParts: themePartsOf(c.themeParts),
             },
             [STORE.tabs]: { enabled: t.enabled === true, minutes: [10, 30, 60, 180].includes(Number(t.minutes)) ? Number(t.minutes) : 30, protect: list(t.protect) },
         };
@@ -164,18 +166,35 @@
         return row;
     }
 
+    const GROUPS = [...new Set(FEATURES.map(f => f.group))];
+    const CATS_PAGE = GROUPS;
+    const CATS_DEFAULTS = [...GROUPS, 'Temas', 'Backup'];
+
+    // Mostra só as funções do tipo escolhido.
+    const viewOf = cats => (cats.includes(cat) ? cat : cats[0]);
+
     function groupedList(container, build) {
+        const view = viewOf(container.id === 'pageFeatures' ? CATS_PAGE : CATS_DEFAULTS);
         container.replaceChildren();
-        let last = '';
-        for (const f of FEATURES) {
-            if (f.group !== last) {
-                const g = document.createElement('div');
-                g.className = 'group';
-                g.textContent = f.group;
-                container.append(g);
-                last = f.group;
-            }
-            container.append(build(f));
+        for (const f of FEATURES) if (f.group === view) container.append(build(f));
+    }
+
+    function renderCats(container, cats) {
+        const view = viewOf(cats);
+        container.replaceChildren();
+        for (const name of cats) {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'cat';
+            b.setAttribute('role', 'tab');
+            b.setAttribute('aria-selected', String(name === view));
+            b.textContent = name;
+            b.addEventListener('click', () => {
+                cat = name;
+                renderPage();
+                renderDefaults();
+            });
+            container.append(b);
         }
     }
 
@@ -205,6 +224,7 @@
         renderBlock(prof);
         renderQuick();
 
+        renderCats($('catsPage'), CATS_PAGE);
         groupedList($('pageFeatures'), f => {
             const blocked = prof && !prof.only.includes(f.id);
             const checked = blocked ? false : (state?.features?.[f.id]?.enabled ?? (typeof entry.overrides?.[f.id] === 'boolean' ? entry.overrides[f.id] : defaultOf(f)));
@@ -391,7 +411,23 @@
         }
     }
 
+    function renderThemeParts() {
+        const box = $('themeParts');
+        box.replaceChildren();
+        const on = themePartsOf(store.config.themeParts);
+        for (const [id, name, desc] of THEME_PARTS) {
+            box.append(featureRow({ name, desc }, on[id], async value => {
+                const parts = { ...themePartsOf(store.config.themeParts), [id]: value };
+                store.config = { ...store.config, themeParts: parts };
+                await save({ [STORE.config]: store.config });
+            }));
+        }
+    }
+
     function renderDefaults() {
+        renderCats($('catsDefaults'), CATS_DEFAULTS);
+        document.querySelectorAll('#tab-defaults .field[data-cat]').forEach(el => { el.hidden = el.dataset.cat !== viewOf(CATS_DEFAULTS); });
+        renderThemeParts();
         groupedList($('defaultFeatures'), f => featureRow(f, defaultOf(f), async value => {
             const defaults = { ...store.defaults };
             if (value === f.def) delete defaults[f.id];
